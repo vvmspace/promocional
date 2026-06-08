@@ -1,6 +1,33 @@
 (() => {
+  const root = document.documentElement;
   const nav = document.querySelector("[data-site-nav]");
   const toggle = document.querySelector("[data-menu-toggle]");
+  const themeToggle = document.querySelector("[data-theme-toggle]");
+
+  const applyTheme = (theme) => {
+    if (theme === "light") {
+      root.setAttribute("data-theme", "light");
+      if (themeToggle) themeToggle.setAttribute("aria-pressed", "true");
+    } else {
+      root.removeAttribute("data-theme");
+      if (themeToggle) themeToggle.setAttribute("aria-pressed", "false");
+    }
+  };
+
+  const savedTheme = localStorage.getItem("promocional-theme");
+  if (savedTheme === "light" || savedTheme === "dark") {
+    applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+    applyTheme("light");
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      localStorage.setItem("promocional-theme", nextTheme);
+      applyTheme(nextTheme);
+    });
+  }
 
   if (!nav || !toggle) return;
 

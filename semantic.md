@@ -1,6 +1,6 @@
 # Núcleo Semántico - promocional.store
 
-Este documento organiza la semántica del sitio para búsquedas de cupones, códigos promocionales y descuentos en Latinoamérica. La intención es cubrir consultas transaccionales reales, con lenguaje natural de la región, sin sonar a plantilla vacía.
+Este documento organiza la semántica del sitio para búsquedas de cupones, códigos promocionales y descuentos en los principales países de habla hispana de la región. La intención es cubrir consultas transaccionales reales, con lenguaje natural de cada país, sin sonar a plantilla vacía.
 
 ## 1. Intención de búsqueda principal
 
@@ -186,7 +186,7 @@ Intención:
 
 ### Home
 
-- H1: `Códigos promocionales y cupones activos en LATAM`
+- H1: `Códigos promocionales y cupones activos en México, Argentina, Colombia, Chile, Perú y Uruguay`
 - Objetivo: capturar búsquedas generales de marca + intención transaccional.
 - Contenido: lista de las 10 páginas principales con títulos claros, breve párrafo y acceso rápido al bot.
 
@@ -200,7 +200,7 @@ Cada landing debe mantener la misma estructura:
 - Caja lateral con acceso al cupón.
 - CTA directo al bot con la marca en el `start` del enlace.
 
-### 4.1. Países objetivo de LATAM
+### 4.1. Países objetivo
 
 Los países con mayor prioridad para el sitio son:
 
@@ -218,6 +218,23 @@ La home y las landings individuales deben combinar marca + país o marca + ciuda
 - `descuento uber bogota`
 - `código promocional pedidosya uruguay`
 - `cupón shein chile`
+
+## 5. Priorización por país y marca
+
+Para que el sitio sea más encontrable, cada página debe reforzar una combinación concreta de marca + país + intención:
+
+- Mercado Libre: Argentina, México, Colombia
+- Rappi: Colombia, México
+- PedidosYa: Chile, Uruguay
+- Uber: México, Argentina, Colombia
+- DiDi: México, Colombia
+- Cabify: Perú, Chile
+- Shein: México, Chile, Argentina
+- AliExpress: Argentina, Perú
+- Airbnb: Argentina, México
+- Spotify: México, Argentina, Chile
+
+La redacción visible debe seguir sonando humana, pero los bloques semánticos tienen que dejar claro el país y el beneficio buscado, porque eso es lo que más ayuda a rankear en consultas reales.
 - `spotify premium mexico`
 
 ## 5. Humanizer editorial

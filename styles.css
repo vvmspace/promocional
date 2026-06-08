@@ -11,15 +11,22 @@
   --card-bg: rgba(18, 17, 28, 0.75);
   --card-border: rgba(255, 255, 255, 0.07);
   --card-border-hover: rgba(0, 242, 254, 0.3);
+  --surface-elevated: rgba(255, 255, 255, 0.04);
+  --surface-muted: rgba(255, 255, 255, 0.02);
+  --panel-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+  --header-bg: rgba(5, 5, 8, 0.7);
+  --footer-bg: rgba(5, 5, 8, 0.9);
   
   /* Paleta Neon & Premium */
   --primary: #00f2fe;
   --primary-rgb: 0, 242, 254;
   --secondary: #9b51e0;
   --secondary-rgb: 155, 81, 224;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
-  --text-dark: #6b7280;
+  --text-main: #f6f8ff;
+  --text-muted: #c6cce0;
+  --text-dark: #94a0bb;
+  --text-strong: #ffffff;
+  --icon-tint: #00f2fe;
   
   /* Fuentes optimizadas del sistema (Cero descargas de red, render inmediato) */
   --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -28,6 +35,26 @@
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --glow-shadow: 0 8px 32px 0 rgba(0, 242, 254, 0.15);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+[data-theme="light"] {
+  --bg-color: #f5f7fb;
+  --bg-gradient: radial-gradient(circle at 50% 0%, #ffffff 0%, #eef3ff 68%);
+  --card-bg: rgba(255, 255, 255, 0.84);
+  --card-border: rgba(20, 24, 39, 0.08);
+  --card-border-hover: rgba(0, 136, 204, 0.22);
+  --surface-elevated: rgba(18, 24, 39, 0.04);
+  --surface-muted: rgba(18, 24, 39, 0.02);
+  --panel-shadow: 0 18px 42px rgba(17, 24, 39, 0.08);
+  --header-bg: rgba(255, 255, 255, 0.78);
+  --footer-bg: rgba(255, 255, 255, 0.88);
+  --text-main: #111827;
+  --text-muted: #4b5563;
+  --text-dark: #64748b;
+  --text-strong: #0f172a;
+  --icon-tint: #0ea5e9;
+  --glow-shadow: 0 12px 36px rgba(14, 165, 233, 0.12);
+  --glass-shadow: 0 8px 32px rgba(15, 23, 42, 0.10);
 }
 
 /* Reset y Estilos Base */
@@ -91,7 +118,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(5, 5, 8, 0.7);
+  background: var(--header-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -109,6 +136,7 @@ header {
   position: relative;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .logo {
@@ -131,6 +159,7 @@ header {
   fill: var(--primary);
 }
 
+.theme-toggle,
 .menu-toggle {
   width: 46px;
   height: 46px;
@@ -145,6 +174,11 @@ header {
   transition: var(--transition);
 }
 
+.theme-toggle {
+  color: var(--text-main);
+}
+
+.theme-toggle:hover,
 .menu-toggle:hover {
   border-color: rgba(0, 242, 254, 0.3);
   color: var(--primary);
@@ -163,6 +197,12 @@ header {
 .menu-toggle svg {
   width: 20px;
   height: 20px;
+  fill: currentColor;
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
   fill: currentColor;
 }
 
@@ -288,6 +328,82 @@ header {
   color: var(--text-muted);
   font-size: 0.92rem;
   line-height: 1.55;
+}
+
+.hero-subtitle,
+.hero-kicker,
+.detail-description p,
+.seo-section p,
+.query-card p,
+.quote-text,
+.quote-author,
+.footer-text {
+  position: relative;
+  background: linear-gradient(180deg, var(--surface-elevated), var(--surface-muted));
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--panel-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.hero-subtitle,
+.hero-kicker,
+.detail-description p,
+.seo-section p,
+.query-card p,
+.quote-text,
+.quote-author,
+.footer-text {
+  padding: 1rem 1rem 1rem 3.15rem;
+}
+
+.hero-subtitle::before,
+.hero-kicker::before,
+.detail-description p::before,
+.seo-section p::before,
+.query-card p::before,
+.quote-text::before,
+.quote-author::before,
+.footer-text::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 16px;
+  height: 16px;
+  background-color: var(--icon-tint);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.2L21 11l-6.1 2.8L12 20l-2.9-6.2L3 11l6.1-2.8L12 2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.2L21 11l-6.1 2.8L12 20l-2.9-6.2L3 11l6.1-2.8L12 2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.detail-description p,
+.seo-section p,
+.query-card p,
+.quote-text,
+.quote-author {
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle,
+.hero-kicker {
+  text-align: left;
+  max-width: 780px;
+}
+
+.quote-text {
+  font-style: italic;
+  color: var(--text-main);
+}
+
+.quote-author {
+  color: var(--text-dark);
+}
+
+.footer-text {
+  max-width: 620px;
+  line-height: 1.6;
+  text-align: left;
 }
 
 .badge {
@@ -474,6 +590,10 @@ header {
 @media (max-width: 850px) {
   .detail-layout {
     grid-template-columns: 1fr;
+  }
+
+  .detail-layout .sidebar {
+    order: -1;
   }
 }
 
@@ -697,7 +817,7 @@ header {
 footer {
   margin-top: 5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(5, 5, 8, 0.9);
+  background: var(--footer-bg);
   padding: 3rem 0;
   text-align: center;
   font-size: 0.85rem;
@@ -716,13 +836,35 @@ footer {
 }
 
 .footer-text {
-  max-width: 500px;
-  line-height: 1.5;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .footer-copyright {
   color: var(--text-dark);
   margin-top: 1rem;
+}
+
+[data-theme="light"] .brand-icon {
+  fill: #111827;
+}
+
+[data-theme="light"] .icon-shein,
+[data-theme="light"] .icon-uber,
+[data-theme="light"] .icon-airbnb,
+[data-theme="light"] .icon-spotify {
+  fill: #111827;
+}
+
+[data-theme="light"] .brand-card-content p,
+[data-theme="light"] .detail-description p,
+[data-theme="light"] .seo-section p,
+[data-theme="light"] .quote-text,
+[data-theme="light"] .quote-author,
+[data-theme="light"] .hero-subtitle,
+[data-theme="light"] .hero-kicker,
+[data-theme="light"] .footer-text {
+  color: var(--text-main);
 }
 
 /* Responsive adjustments */
@@ -744,6 +886,16 @@ footer {
   }
   .site-nav {
     width: min(92vw, 280px);
+  }
+  .hero-subtitle,
+  .hero-kicker,
+  .detail-description p,
+  .seo-section p,
+  .query-card p,
+  .quote-text,
+  .quote-author,
+  .footer-text {
+    padding-left: 2.8rem;
   }
 }
 
